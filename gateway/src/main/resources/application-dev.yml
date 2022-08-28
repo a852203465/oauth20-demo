@@ -1,0 +1,10 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          # JWT URI，认证服务器IP，端口
+          jwk-set-uri: 'http://localhost:8000/rsa/publicKey'
+
+
+

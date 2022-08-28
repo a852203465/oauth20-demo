@@ -1,0 +1,30 @@
+spring:
+  profiles:
+    active: dev
+
+  security:
+    access-token-validity-seconds: 3600
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
