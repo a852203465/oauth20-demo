@@ -1,22 +1,21 @@
 # Spring Boot 整合 spring cloud oauth2
 
 ## 1. 说明
-    Oauth2.0是目前流行的授权机制，用于授权第三方应用，获取数据。
-
+   Oauth2.0是目前流行的授权机制，用于授权第三方应用，获取数据。
+   ![认证流程](./images/认证流程.png)
 ## 2. 授权流程（四种方式）
-
 ### 2.1 授权码模式(Authorization Code)
-    正宗的oauth模式，先获取授权码，在通过授权码获取token
-
+   正宗的oauth模式，先获取授权码，在通过授权码获取token
+   ![认证流程](./images/授权码模式.png)
 ### 2.2 简化模式（Implicit）
-    和授权模式相比取消了授权过程，直接获取token
-
+   和授权模式相比取消了授权过程，直接获取token
+   ![认证流程](./images/简化模式.png)
 ### 2.3 密码模式（Resource Owner Password Credentials）
-    客户端直接向用户获取账号密码（不安全），之后向授权服务器获取token
-
+   客户端直接向用户获取账号密码（不安全），之后向授权服务器获取token
+   ![认证流程](./images/密码模式.png)
 ### 2.4 客户端模式（Client Credentials）
-    客户端直接通过客户端认证（比如client_id和client_secret）从认证服务器获取访问令牌。
-
+   客户端直接通过客户端认证（比如client_id和client_secret）从认证服务器获取访问令牌。
+   ![认证流程](./images/客户端模式.png)
 ## 3. 配置说明
  - scopes:授权范围标识，比如指定微服务名称，则只可以访问指定的微服务
  - autoApprove:false跳转到授权页面手动点击授权，true不需要手动授权，直接响应授权码
