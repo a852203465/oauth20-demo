@@ -16,6 +16,7 @@
 ### 2.4 客户端模式（Client Credentials）
    客户端直接通过客户端认证（比如client_id和client_secret）从认证服务器获取访问令牌。
    ![认证流程](./images/客户端模式.png)
+
 ## 3. 配置说明
  - scopes:授权范围标识，比如指定微服务名称，则只可以访问指定的微服务
  - autoApprove:false跳转到授权页面手动点击授权，true不需要手动授权，直接响应授权码
@@ -31,10 +32,23 @@
  - accessTokenValiditySeconds :token有效时间（单位毫秒）
  - refreshTokenValiditySeconds:刷新token有效期(单位毫秒)
 
+## 4. 服务端端点说明
+   1. AuthorizationEndpoint: 根据用户认证获得授权码
+      - /oauth/authorize  GET
+      - /oauth/authorize  POST
 
-
-
-
+   2. TokenEndpoint: 客户端根据授权码获取 token
+      - /oauth/token  GET
+      - /oauth/token  POST
+   
+   3. CheckTokenEndpoint: 可以用于远程解码令牌
+      - /oauth/check_token
+   
+   4. WhitelabelApprovalEndpoint: 显示授权服务器的确认页
+      - /oauth/confirm_access
+   
+   5. WhitelabelErrorEndpoint: 显示授权服务器的错误页 
+      - /oauth/error
 
 
 
