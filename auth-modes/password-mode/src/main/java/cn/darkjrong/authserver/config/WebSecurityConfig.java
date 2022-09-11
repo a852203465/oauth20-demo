@@ -39,7 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                 .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
-                .antMatchers("/rsa/publicKey", "/oauth/**").anonymous()
+                .antMatchers("/rsa/publicKey", "/oauth/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

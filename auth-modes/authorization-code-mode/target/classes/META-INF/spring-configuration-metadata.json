@@ -1,0 +1,18 @@
+{
+  "groups": [
+    {
+      "name": "spring.security",
+      "type": "cn.darkjrong.authserver.config.TokenConfig",
+      "sourceType": "cn.darkjrong.authserver.config.TokenConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.security.access-token-validity-seconds",
+      "type": "java.lang.Integer",
+      "description": "accessToken 超时时间， 单位：秒",
+      "sourceType": "cn.darkjrong.authserver.config.TokenConfig"
+    }
+  ],
+  "hints": []
+}

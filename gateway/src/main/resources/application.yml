@@ -41,10 +41,13 @@ spring:
           uri: lb://client-mode
           predicates:
             - Path=/client/**
-
+        - id: authorization-code-mode
+          uri: lb://authorization-code-mode
+          predicates:
+            - Path=/authcode/**
 
   security:
-    urls: /*/oauth/**, /webjars/**, /doc.html, /swagger-resources/**, /*/v3/api-docs, /actuator/**
+    urls: /*/oauth/**, /webjars/**, /doc.html, /swagger-resources/**, /*/v3/api-docs, /actuator/**, /favicon.ico, /oauth/**
 
 resilience4j:
   circuitbreaker:
