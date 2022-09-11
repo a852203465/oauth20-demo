@@ -23,7 +23,7 @@ public class TokenConfig {
     /**
      *  refreshToken 超时时间 单位：秒
      */
-//    private Integer refreshTokenValiditySeconds = 86400;
+    private Integer refreshTokenValiditySeconds = 86400;
 
 
 

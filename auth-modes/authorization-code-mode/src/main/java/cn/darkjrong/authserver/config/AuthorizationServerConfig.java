@@ -137,7 +137,7 @@ public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAda
         // refreshToken 不重用策略
         tokenServices.setReuseRefreshToken(false);
         tokenServices.setAccessTokenValiditySeconds(tokenConfig.getAccessTokenValiditySeconds());
-//        tokenServices.setRefreshTokenValiditySeconds(tokenConfig.getRefreshTokenValiditySeconds());
+        tokenServices.setRefreshTokenValiditySeconds(tokenConfig.getRefreshTokenValiditySeconds());
         //设置Token存储方式
         tokenServices.setTokenStore(tokenStore());
         tokenServices.setTokenEnhancer(tokenEnhancerChain());
