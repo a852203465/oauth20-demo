@@ -1,0 +1,278 @@
+{
+	"info": {
+		"_postman_id": "74c3ecd3-5b9f-4a06-b7ed-3fc49cf493ff",
+		"name": "oauth2.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4728293"
+	},
+	"item": [
+		{
+			"name": "密码模式",
+			"item": [
+				{
+					"name": "获取令牌",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8010/password/oauth/token?grant_type=password&client_id=client-app&client_secret=123456&username=admin&password=123456",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"password",
+								"oauth",
+								"token"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "password"
+								},
+								{
+									"key": "scope",
+									"value": "all",
+									"disabled": true
+								},
+								{
+									"key": "client_id",
+									"value": "client-app"
+								},
+								{
+									"key": "client_secret",
+									"value": "123456"
+								},
+								{
+									"key": "username",
+									"value": "admin"
+								},
+								{
+									"key": "password",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询当前用户",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJhdGkiOiJhY2U5ODAzNC05MTdiLTRiOWQtYjRlNy00ZDA3NmRmOWZlODEiLCJleHAiOjE2NjE3NjM4NzIsImF1dGhvcml0aWVzIjpbIkFETUlOIl0sImp0aSI6ImY0ZjhmMzI5LWQ2NDItNDM0Ny1hOThiLThjODIyNDhmNTE3YyIsImNsaWVudF9pZCI6ImNsaWVudC1hcHAifQ.FlsL5lTjRdi9TVnmJjLOUEiPtZMrt87RVxQtlmnainJQCyAboQnYUA3MDfNx8-HU9Ee3F65NoLviSH9Xz1DV90OOrtDmXHJpalK9utcjEsTl9Gm-iCmISbVdvpn1xFE7pF6nQrAMM3YKeTqoNcrNtP_qKwcAbAiltc4ZEIey1MeZlpVsTtaDYP1pvDQriTFVAa9fLQYb7_JmlQS88Ts3_DdIZdbEIJE24OrJnJVR_T4HW2ZLe_NgvoISTAk7zdG47HD3aLPpJDnDSYuAOnCSGF2LFUOrDNSWHksQLEiwr36QLHpT8qZdKtmcgznC_N29R9uGX22M02q0SzBCpVXFfQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8010/resource/currentUser",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"resource",
+								"currentUser"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjE2MTYyMDYsInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiQURNSU4iXSwianRpIjoiYmEzNDRiMzMtNDNhOS00YTY4LTkzNzMtOTgwYjA4YTcxZTMxIiwiY2xpZW50X2lkIjoiY2xpZW50LWFwcCIsInNjb3BlIjpbImFsbCJdfQ.CvvaxT72WeThcpNBM-bdzmrxKcp3t3K3CTxV4Ut6ePcLr_JrHEdmATvMui-4HMakA_YyNYTFXZh0_NifAxsBnEc-EvOa1xGlJmfTiuHX9amgI6tkzl7YIDohK8Nv3hs-77XS9huLvBI17fOR0tYUg5Ou_X84l1TUaXcdgcK_UDlT3LGpPerG2-54ADSMG6DyhPkqW8-0y3qEayotLZZ0EFXOEtElL6bVGzYv7njCg_JfyMFDNFjzs8phhpJNMGLn4kAvysVCrMb7YlqpqaASoT9nPmhxUmWbHeuBQthnANPW64ZTFFjQ2OVYWVF4LuzfYdD3ru90T1FNxVadDHnBOQ",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "刷新令牌",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8010/password/oauth/token?grant_type=refresh_token&client_id=client-app&client_secret=123456&refresh_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJhdGkiOiJlNTdhNzAwNC1lNjM5LTQyYzItODk0MC04YTFjOTc0MThlNjgiLCJleHAiOjE2NjE3NDM2OTcsImF1dGhvcml0aWVzIjpbIkFETUlOIl0sImp0aSI6IjQ0YTQyYzA1LTRmZGUtNGEzYi05MDA1LTVkZjEwNGFjNDA5MiIsImNsaWVudF9pZCI6ImNsaWVudC1hcHAifQ.jCcm2Ac11W3E0NHAz70hqf1t_YWnDfdypzyq_C-IHAgY0HOVeguWxcRq39xogVoX848i0iGttKA9qkQFeK3Hi2HA6gwykjuDH4AsE4v6A5VxJP4TJVijPLhskboGaV0Co9I_ZLGqyl7Y7oyG93iLVxm4resMRRsH-DH9DBOM8oy_L0fLSp1m4k_kbgr3eg7QufdCfSi8i9R86pQbuPihzyCNAPu5k-9jEq4kW_ZBtByJskmji_hv41iNeFMXkm7_TpiEOmiT68tf_9h7xAK2K_gRDsC5IwUk-U-YkOX1bSsbwEHPH5Ew3aQgHqOZbINQWDhENRj2NAlTwMQN8AfvSw",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"password",
+								"oauth",
+								"token"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "refresh_token"
+								},
+								{
+									"key": "client_id",
+									"value": "client-app"
+								},
+								{
+									"key": "client_secret",
+									"value": "123456"
+								},
+								{
+									"key": "refresh_token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJhdGkiOiJlNTdhNzAwNC1lNjM5LTQyYzItODk0MC04YTFjOTc0MThlNjgiLCJleHAiOjE2NjE3NDM2OTcsImF1dGhvcml0aWVzIjpbIkFETUlOIl0sImp0aSI6IjQ0YTQyYzA1LTRmZGUtNGEzYi05MDA1LTVkZjEwNGFjNDA5MiIsImNsaWVudF9pZCI6ImNsaWVudC1hcHAifQ.jCcm2Ac11W3E0NHAz70hqf1t_YWnDfdypzyq_C-IHAgY0HOVeguWxcRq39xogVoX848i0iGttKA9qkQFeK3Hi2HA6gwykjuDH4AsE4v6A5VxJP4TJVijPLhskboGaV0Co9I_ZLGqyl7Y7oyG93iLVxm4resMRRsH-DH9DBOM8oy_L0fLSp1m4k_kbgr3eg7QufdCfSi8i9R86pQbuPihzyCNAPu5k-9jEq4kW_ZBtByJskmji_hv41iNeFMXkm7_TpiEOmiT68tf_9h7xAK2K_gRDsC5IwUk-U-YkOX1bSsbwEHPH5Ew3aQgHqOZbINQWDhENRj2NAlTwMQN8AfvSw"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "验证令牌",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic Y2xpZW50LWFwcDoxMjM0NTY=",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:8010/password/oauth/check_token?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjE2ODEwNzIsInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiQURNSU4iXSwianRpIjoiYWNlOTgwMzQtOTE3Yi00YjlkLWI0ZTctNGQwNzZkZjlmZTgxIiwiY2xpZW50X2lkIjoiY2xpZW50LWFwcCIsInNjb3BlIjpbImFsbCJdfQ.nl0MgqjJbLmv4FzxPbkakWD1aER8Miap3WAXsE9q5i96aQ1gxcUU5km1WnErzh9q43GCu5FCqGtALibNUqsZ4kBXWYP-kQ-izNSzZoK3bG4-U_HbxaoyLVtvZxFasVZET2CZUuJqdWHKMvwyLuhqBuwYPXJPiv_INGbSw2zEN9B_pof1j3_aFxJTwGNw6BHtnRB3Hcf6UzCT8aKloLjM77k2LvPlOxREbnEOztLY8ZVkQaKX0qrd3HC3KkxkeuqXXRtPZShXMdM-gmFDW28EmtODpZ4AmS_q2LIGdT3FeKmd26WvRW1Pu8EADVpJGdwnwnSzTA33PpFFKhoJjQFNyg",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"password",
+								"oauth",
+								"check_token"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjE2ODEwNzIsInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiQURNSU4iXSwianRpIjoiYWNlOTgwMzQtOTE3Yi00YjlkLWI0ZTctNGQwNzZkZjlmZTgxIiwiY2xpZW50X2lkIjoiY2xpZW50LWFwcCIsInNjb3BlIjpbImFsbCJdfQ.nl0MgqjJbLmv4FzxPbkakWD1aER8Miap3WAXsE9q5i96aQ1gxcUU5km1WnErzh9q43GCu5FCqGtALibNUqsZ4kBXWYP-kQ-izNSzZoK3bG4-U_HbxaoyLVtvZxFasVZET2CZUuJqdWHKMvwyLuhqBuwYPXJPiv_INGbSw2zEN9B_pof1j3_aFxJTwGNw6BHtnRB3Hcf6UzCT8aKloLjM77k2LvPlOxREbnEOztLY8ZVkQaKX0qrd3HC3KkxkeuqXXRtPZShXMdM-gmFDW28EmtODpZ4AmS_q2LIGdT3FeKmd26WvRW1Pu8EADVpJGdwnwnSzTA33PpFFKhoJjQFNyg"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "客户端模式",
+			"item": [
+				{
+					"name": "获取令牌",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8010/client/oauth/token?grant_type=client_credentials&scope=all&client_id=client-app&client_secret=123456",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"client",
+								"oauth",
+								"token"
+							],
+							"query": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials"
+								},
+								{
+									"key": "scope",
+									"value": "all"
+								},
+								{
+									"key": "client_id",
+									"value": "client-app"
+								},
+								{
+									"key": "client_secret",
+									"value": "123456"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查询当前用户",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJhbGwiXSwiZXhwIjoxNjYxNjk5OTE2LCJqdGkiOiJmMDdkYjkwNC1kYTQzLTRkNDMtYjQwNC0wZjIyZjhjNjI1YTgiLCJjbGllbnRfaWQiOiJjbGllbnQtYXBwIn0.ch6qTl56YqBy5ZHMjnqC66ZjW5Kd_yMl58aRYIWFgcldQCvyjOpitbiToDYvhH--WANVqp_ahitIOSVtzUu2MmYO-MrclE_eU0Yt3NQvkCjQKR5fLyWmUMCeJaJkwfLj5sTXlaA7FUyM5UOw4cuYgpCkLA8_m0fJ-olJzcR1U3G9-Qcb_9qT7lXCHJefk6O8a4RWcj7ngZ6StY7lCsvAs7BhNHvPpmlOVog8XGFwQn6JmJV_Ac8zBVjB-fwJSWn_zPVIKNR8-OBWVb-3MWlKHJlziWwo6uGnjX1qiq3R0Xma7X_CP8yDdH7N9cCoWBngTJXaUulQTymZyuyq9DUKEQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8010/resource/currentUser",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"resource",
+								"currentUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "验证令牌",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8010/client/oauth/check_token?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJhbGwiXSwiZXhwIjoxNjYxNzAwNjk2LCJqdGkiOiI2OWVmZDgzNS00YzU5LTRjMTktODc0OS03NzFiMDU1NjFjMjIiLCJjbGllbnRfaWQiOiJjbGllbnQtYXBwIn0.Iuqbqo9d8LeV033pVyc036uc7uNTxF77PTaazqv9fNrq9UU4KAgsAGuZRuM6AJGEnfa7LaYyieRZAxDaF3zs-SV7iy2mRDqYs4BSDt_6C8nCPxFGeWpH5aGipm7h9PaUdJ8bH29uvQX0Sq5ngT11tlnQVXHzVQEV0kGYaB8dRdmJJl0eXpbR43JER9zZfv7M5JSESr5WcSob1d1OK4_3hoRbMYARVax5bzg1t8ekQgKQUCJ8GrA_pVOHi4PuJlLRLtW1NdMxbmiTIC5tD61Q94ovEg3sy2_7L3q7VAFji5psTy6LaB3p6dc7LXH8W_yASnHklx_8qffgnwofgAI_zg",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"client",
+								"oauth",
+								"check_token"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJhbGwiXSwiZXhwIjoxNjYxNzAwNjk2LCJqdGkiOiI2OWVmZDgzNS00YzU5LTRjMTktODc0OS03NzFiMDU1NjFjMjIiLCJjbGllbnRfaWQiOiJjbGllbnQtYXBwIn0.Iuqbqo9d8LeV033pVyc036uc7uNTxF77PTaazqv9fNrq9UU4KAgsAGuZRuM6AJGEnfa7LaYyieRZAxDaF3zs-SV7iy2mRDqYs4BSDt_6C8nCPxFGeWpH5aGipm7h9PaUdJ8bH29uvQX0Sq5ngT11tlnQVXHzVQEV0kGYaB8dRdmJJl0eXpbR43JER9zZfv7M5JSESr5WcSob1d1OK4_3hoRbMYARVax5bzg1t8ekQgKQUCJ8GrA_pVOHi4PuJlLRLtW1NdMxbmiTIC5tD61Q94ovEg3sy2_7L3q7VAFji5psTy6LaB3p6dc7LXH8W_yASnHklx_8qffgnwofgAI_zg"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "授权码模式",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
