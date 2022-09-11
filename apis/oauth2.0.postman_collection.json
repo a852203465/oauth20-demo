@@ -161,6 +161,36 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "JWT公钥",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjI5MTIwNjUsInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiQURNSU4iXSwianRpIjoiNThiMzUzZjQtMDI2ZS00MDk2LThhYTAtZDJkOWM3ZjJkYzE3IiwiY2xpZW50X2lkIjoiY2xpZW50LWFwcCIsInNjb3BlIjpbImFsbCJdfQ.juvN4thu3MJI4utIwvS7nwJXQ2aRnXdgtCQS-hC384bsrewY3eFJ3Q7MWI0aI12P36B1IONg8DMNCkwoQr3k5YjH-HKrCLBuLddz8TT_XoVxySE663y1CkAO4p2HnPhdefGNrB6TGLGUd98X-QqNTKxpfWvDhHLzumK7g8BoQXI5cCH9xyOxdHPcoMzdbi7X1n2L-KOtBd0_U3EbX54DN1sw-c7F4dEHvIecUnS-LzZwR68_uhGN7oFFrQWUCiYfoY7Lds4YBe35DDFlUA3WyrmH6ISjSKODyk2kn6OJVsi5BvFqiWCTjtuQCILAdavI5L5EgogeymxSzvd5yzPlzA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8010/password/oauth/token_key",
+							"host": [
+								"localhost"
+							],
+							"port": "8010",
+							"path": [
+								"password",
+								"oauth",
+								"token_key"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -273,9 +303,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "ocalhost:8000/oauth/authorize?response_type=code&client_id=client-app&scope=all",
+									"raw": "localhost:8000/oauth/authorize?response_type=code&client_id=client-app&scope=all",
 									"host": [
-										"ocalhost"
+										"localhost"
 									],
 									"port": "8000",
 									"path": [
@@ -306,7 +336,7 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8000/oauth/token?grant_type=authorization_code&code=BHhToa&scope=all&client_id=client-app&client_secret=123456",
+									"raw": "http://localhost:8000/oauth/token?grant_type=authorization_code&code=U6qxYr&scope=all&client_id=client-app&client_secret=123456",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -323,7 +353,7 @@
 										},
 										{
 											"key": "code",
-											"value": "BHhToa"
+											"value": "U6qxYr"
 										},
 										{
 											"key": "scope",
@@ -398,6 +428,44 @@
 										{
 											"key": "token",
 											"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjI5MDc4OTgsInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiQURNSU4iXSwianRpIjoiYjM3YWIwN2QtZTEwNS00ODdiLThmNzctNzA5ZjU4Y2QyZjZhIiwiY2xpZW50X2lkIjoiY2xpZW50LWFwcCIsInNjb3BlIjpbImFsbCJdfQ.dqGiMoKlHV-ZSAtrjmFkdH99kbjSB8nOxTL2GTsEsZ2vhDs97nqHeb_Yh0tgyhRirUGoMzYMItD0hGBB6j6j28dKaSkUVqC3EuMShUiE5oG0HK9780hDGTAI2XaIBSIBd98I-e-K_ejgZjeAZVfdBVHtFtYfnR2gKxVbokwbzU68NbIrfXCiFmFFy4eOcdPHdzzIrX5r5Fyw1FCzGbxOmi18qX_C-qdKdxe-4SXgQG6w8uZX7LgyXfuxGCN9RiTSrsp3Xi-OSr7IZJPfNG94sAHWFJ05DXMOzXuXe0IhrokGdhJh-VknOXgbQHzc1VgTzkxXQrkLz0pTBGdUH9yKbA"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取令牌",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/oauth/authorize?response_type=code&client_id=client-app&scope=all&redirect_uri=http://localhost:8000/login/directly-callback\n",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"oauth",
+										"authorize"
+									],
+									"query": [
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "client-app"
+										},
+										{
+											"key": "scope",
+											"value": "all"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8000/login/directly-callback\n"
 										}
 									]
 								}

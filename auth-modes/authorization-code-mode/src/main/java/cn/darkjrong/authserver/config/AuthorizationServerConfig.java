@@ -43,6 +43,7 @@ public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAda
     private final CustomWebResponseExceptionTranslator webResponseExceptionTranslator;
 
     private static final String REDIRECT_URI = "http://localhost:%s/login/callback";
+    private static final String REDIRECT_URI2 = "http://localhost:%s/login/directly-callback";
 
     /**
      * 配置认证客户端
@@ -56,7 +57,7 @@ public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAda
                 .withClient(AuthMode.CLIENT_ID.getValue())
                 .secret(passwordEncoder.encode(AuthMode.CLIENT_SECRET.getValue()))
                 .scopes(AuthMode.SCOPES.getValue())
-                .redirectUris(String.format(REDIRECT_URI, port))
+                .redirectUris(String.format(REDIRECT_URI, port), String.format(REDIRECT_URI2, port))
                 // 开启自动确认
 //                .autoApprove(Boolean.TRUE)
                 .authorizedGrantTypes(AuthMode.AUTHORIZATION_CODE.getValue(), AuthMode.REFRESH_TOKEN.getValue());

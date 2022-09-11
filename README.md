@@ -33,22 +33,23 @@
  - refreshTokenValiditySeconds:刷新token有效期(单位毫秒)
 
 ## 4. 服务端端点说明
-   1. AuthorizationEndpoint: 根据用户认证获得授权码
-      - /oauth/authorize  GET
-      - /oauth/authorize  POST
+   1. AuthorizationEndpoint: 授权端点
+      - /oauth/authorize: 获取授权码
 
-   2. TokenEndpoint: 客户端根据授权码获取 token
-      - /oauth/token  GET
-      - /oauth/token  POST
+   2. TokenEndpoint: 令牌端点
+      - /oauth/token: 获取令牌
    
-   3. CheckTokenEndpoint: 可以用于远程解码令牌
-      - /oauth/check_token
+   3. CheckTokenEndpoint: 解码令牌端点
+      - /oauth/check_token: 用户资源服务访问的令牌解析端点
    
    4. WhitelabelApprovalEndpoint: 显示授权服务器的确认页
-      - /oauth/confirm_access
+      - /oauth/confirm_access: 用户确认授权提交端点
    
-   5. WhitelabelErrorEndpoint: 显示授权服务器的错误页 
-      - /oauth/error
+   5. WhitelabelErrorEndpoint: 授权错误处理端点
+      - /oauth/error: 授权服务错误信息端点
+   
+   6. TokenKeyEndpoint: JWT令牌端点
+      - /oauth/token_key: 提供共有秘钥的端点，如果使用JWT令牌
 
 
 
