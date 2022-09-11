@@ -265,12 +265,146 @@
 			"name": "授权码模式",
 			"item": [
 				{
-					"name": "New Request",
-					"request": {
-						"method": "GET",
-						"header": []
-					},
-					"response": []
+					"name": "直接访问认证服务",
+					"item": [
+						{
+							"name": "获取CODE(使用浏览器访问)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "ocalhost:8000/oauth/authorize?response_type=code&client_id=client-app&scope=all",
+									"host": [
+										"ocalhost"
+									],
+									"port": "8000",
+									"path": [
+										"oauth",
+										"authorize"
+									],
+									"query": [
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "client-app"
+										},
+										{
+											"key": "scope",
+											"value": "all"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取令牌",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/oauth/token?grant_type=authorization_code&code=BHhToa&scope=all&client_id=client-app&client_secret=123456",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"oauth",
+										"token"
+									],
+									"query": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code"
+										},
+										{
+											"key": "code",
+											"value": "BHhToa"
+										},
+										{
+											"key": "scope",
+											"value": "all"
+										},
+										{
+											"key": "client_id",
+											"value": "client-app"
+										},
+										{
+											"key": "client_secret",
+											"value": "123456"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "刷新令牌",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/oauth/token?grant_type=refresh_token&client_id=client-app&client_secret=123456&refresh_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJhdGkiOiI1MTRhMjBkZi1mM2ZlLTQyYTMtYWFkOS1lZTM2MmJkZjAxNmMiLCJleHAiOjE2NjU0OTYwMTAsImF1dGhvcml0aWVzIjpbIkFETUlOIl0sImp0aSI6ImUxNmJlNTM2LTkzMmUtNDQzYy1iOWI5LTQxMDdiMGUyNGY2MyIsImNsaWVudF9pZCI6ImNsaWVudC1hcHAifQ.G02pT-rAsmObK2yyIrftfqouW30EPiSBxu27-ntmsqAHe5kUTv7aTqOeVLN-otzyM078eLSq7qDsw0LlKGOv5ZFgOvsf5ZXrO-hY49npmZ-qR2daSO8L1cYED4MQaGVCbo08_aIveayIjIy3tVI-giFCLNhbmCQVFERmSTXIq2pLv91YzF0SZSYUbWzVhtfD4fIBTnpAcitKPCWTTdPxQV62rPaWABpFgmxn80SSrde_zCeLpoVhiLcE9s9xgyGfY71SS6RWuuwfQGxUthQx6jVtMU6szEe06ecSXaUMa9wHGhORvlkZG35aSP59HsBPT1wirwWq8W1h-dNEG_jqmA",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"oauth",
+										"token"
+									],
+									"query": [
+										{
+											"key": "grant_type",
+											"value": "refresh_token"
+										},
+										{
+											"key": "client_id",
+											"value": "client-app"
+										},
+										{
+											"key": "client_secret",
+											"value": "123456"
+										},
+										{
+											"key": "refresh_token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJhZG1pbiIsInNjb3BlIjpbImFsbCJdLCJhdGkiOiI1MTRhMjBkZi1mM2ZlLTQyYTMtYWFkOS1lZTM2MmJkZjAxNmMiLCJleHAiOjE2NjU0OTYwMTAsImF1dGhvcml0aWVzIjpbIkFETUlOIl0sImp0aSI6ImUxNmJlNTM2LTkzMmUtNDQzYy1iOWI5LTQxMDdiMGUyNGY2MyIsImNsaWVudF9pZCI6ImNsaWVudC1hcHAifQ.G02pT-rAsmObK2yyIrftfqouW30EPiSBxu27-ntmsqAHe5kUTv7aTqOeVLN-otzyM078eLSq7qDsw0LlKGOv5ZFgOvsf5ZXrO-hY49npmZ-qR2daSO8L1cYED4MQaGVCbo08_aIveayIjIy3tVI-giFCLNhbmCQVFERmSTXIq2pLv91YzF0SZSYUbWzVhtfD4fIBTnpAcitKPCWTTdPxQV62rPaWABpFgmxn80SSrde_zCeLpoVhiLcE9s9xgyGfY71SS6RWuuwfQGxUthQx6jVtMU6szEe06ecSXaUMa9wHGhORvlkZG35aSP59HsBPT1wirwWq8W1h-dNEG_jqmA"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "验证令牌",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/oauth/check_token?token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjI5MDc4OTgsInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiQURNSU4iXSwianRpIjoiYjM3YWIwN2QtZTEwNS00ODdiLThmNzctNzA5ZjU4Y2QyZjZhIiwiY2xpZW50X2lkIjoiY2xpZW50LWFwcCIsInNjb3BlIjpbImFsbCJdfQ.dqGiMoKlHV-ZSAtrjmFkdH99kbjSB8nOxTL2GTsEsZ2vhDs97nqHeb_Yh0tgyhRirUGoMzYMItD0hGBB6j6j28dKaSkUVqC3EuMShUiE5oG0HK9780hDGTAI2XaIBSIBd98I-e-K_ejgZjeAZVfdBVHtFtYfnR2gKxVbokwbzU68NbIrfXCiFmFFy4eOcdPHdzzIrX5r5Fyw1FCzGbxOmi18qX_C-qdKdxe-4SXgQG6w8uZX7LgyXfuxGCN9RiTSrsp3Xi-OSr7IZJPfNG94sAHWFJ05DXMOzXuXe0IhrokGdhJh-VknOXgbQHzc1VgTzkxXQrkLz0pTBGdUH9yKbA",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"oauth",
+										"check_token"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjI5MDc4OTgsInVzZXJfbmFtZSI6ImFkbWluIiwiYXV0aG9yaXRpZXMiOlsiQURNSU4iXSwianRpIjoiYjM3YWIwN2QtZTEwNS00ODdiLThmNzctNzA5ZjU4Y2QyZjZhIiwiY2xpZW50X2lkIjoiY2xpZW50LWFwcCIsInNjb3BlIjpbImFsbCJdfQ.dqGiMoKlHV-ZSAtrjmFkdH99kbjSB8nOxTL2GTsEsZ2vhDs97nqHeb_Yh0tgyhRirUGoMzYMItD0hGBB6j6j28dKaSkUVqC3EuMShUiE5oG0HK9780hDGTAI2XaIBSIBd98I-e-K_ejgZjeAZVfdBVHtFtYfnR2gKxVbokwbzU68NbIrfXCiFmFFy4eOcdPHdzzIrX5r5Fyw1FCzGbxOmi18qX_C-qdKdxe-4SXgQG6w8uZX7LgyXfuxGCN9RiTSrsp3Xi-OSr7IZJPfNG94sAHWFJ05DXMOzXuXe0IhrokGdhJh-VknOXgbQHzc1VgTzkxXQrkLz0pTBGdUH9yKbA"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		}
