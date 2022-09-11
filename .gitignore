@@ -1,6 +1,5 @@
 # Project exclude paths
-/auth-modes/client-mode/target/
-/auth-modes/password-mode/target/
+/auth-modes/**/target/
 /eureka/target/
 /gateway/target/
 /oauth-common/target/
