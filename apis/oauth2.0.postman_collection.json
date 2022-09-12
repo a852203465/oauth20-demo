@@ -336,7 +336,7 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:8000/oauth/token?grant_type=authorization_code&code=U6qxYr&scope=all&client_id=client-app&client_secret=123456",
+									"raw": "http://localhost:8000/oauth/token?grant_type=authorization_code&code=U6qxYr&scope=all&client_id=client-app&client_secret=123456&redirect_uri=http://localhost:8000/login/callback",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -366,6 +366,10 @@
 										{
 											"key": "client_secret",
 											"value": "123456"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8000/login/callback"
 										}
 									]
 								}
@@ -435,7 +439,7 @@
 							"response": []
 						},
 						{
-							"name": "获取令牌",
+							"name": "获取令牌(浏览器访问)",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -466,6 +470,121 @@
 										{
 											"key": "redirect_uri",
 											"value": "http://localhost:8000/login/directly-callback\n"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取令牌(自动确认)",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/oauth/authorize?response_type=code&client_id=client-app&scope=all&redirect_uri=http://localhost:8000/login/directly-callback",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"oauth",
+										"authorize"
+									],
+									"query": [
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "client-app"
+										},
+										{
+											"key": "scope",
+											"value": "all"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8000/login/directly-callback"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "访问网关",
+					"item": [
+						{
+							"name": "获取令牌(浏览器访问)，自动确认",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://192.168.160.1:8010/authcode/oauth/authorize?response_type=code&client_id=client-app&scope=all&redirect_uri=http://localhost:8000/login/directly-callback",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"160",
+										"1"
+									],
+									"port": "8010",
+									"path": [
+										"authcode",
+										"oauth",
+										"authorize"
+									],
+									"query": [
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "client-app"
+										},
+										{
+											"key": "scope",
+											"value": "all"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "http://localhost:8000/login/directly-callback"
 										}
 									]
 								}

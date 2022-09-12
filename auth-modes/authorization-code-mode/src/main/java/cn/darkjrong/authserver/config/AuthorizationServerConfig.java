@@ -2,6 +2,7 @@ package cn.darkjrong.authserver.config;
 
 import cn.darkjrong.oauth.common.enums.AuthMode;
 import cn.darkjrong.oauth.common.utils.JwksUtils;
+import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.ObjectUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
@@ -41,9 +42,7 @@ public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAda
     private final CustomAccessDeniedHandler accessDeniedHandler;
     private final CustomAuthenticationEntryPoint authenticationEntryPoint;
     private final CustomWebResponseExceptionTranslator webResponseExceptionTranslator;
-
-    private static final String REDIRECT_URI = "http://localhost:%s/login/callback";
-    private static final String REDIRECT_URI2 = "http://localhost:%s/login/directly-callback";
+    private final AuthProperties authProperties;
 
     /**
      * 配置认证客户端
@@ -57,9 +56,8 @@ public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAda
                 .withClient(AuthMode.CLIENT_ID.getValue())
                 .secret(passwordEncoder.encode(AuthMode.CLIENT_SECRET.getValue()))
                 .scopes(AuthMode.SCOPES.getValue())
-                .redirectUris(String.format(REDIRECT_URI, port), String.format(REDIRECT_URI2, port))
-                // 开启自动确认
-//                .autoApprove(Boolean.TRUE)
+                .redirectUris(Convert.toStrArray(authProperties.getRedirectUris()))
+                .autoApprove(authProperties.getAutoApprove())
                 .authorizedGrantTypes(AuthMode.AUTHORIZATION_CODE.getValue(), AuthMode.REFRESH_TOKEN.getValue());
     }
 
@@ -75,7 +73,6 @@ public class AuthorizationServerConfig  extends AuthorizationServerConfigurerAda
 
         //自定义异常转换类(处理grant_type, username, password错误的异常)
         endpoints.exceptionTranslator(webResponseExceptionTranslator);
-
     }
 
     /**

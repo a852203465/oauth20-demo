@@ -6,7 +6,12 @@ spring:
     access-token-validity-seconds: 3600
     refresh-token-validity-seconds: 86400
 
+    oauth2:
+      redirectUris:
+        - http://localhost:8000/login/callback
+        - http://localhost:8000/login/directly-callback
 
+      autoApprove: true
 
 
 
