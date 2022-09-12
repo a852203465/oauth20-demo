@@ -9,6 +9,7 @@ import org.springframework.security.oauth2.provider.endpoint.WhitelabelApprovalE
 import org.springframework.stereotype.Controller;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -28,12 +29,10 @@ import java.util.Map;
 public class AuthController {
 
     @Autowired
-//    令牌处理器
     private TokenEndpoint tokenEndpoint;
 
     @Autowired
-//    授权处理器
-    private AuthorizationEndpoint authEndpoint;
+    private AuthorizationEndpoint authorizationEndpoint;
 
     @Autowired
     private WhitelabelApprovalEndpoint whitelabelApprovalEndpoint;
@@ -67,7 +66,21 @@ public class AuthController {
         return whitelabelApprovalEndpoint.getAccessConfirmation(model,request);
     }
 
-
+    /**
+     * 授权
+     *
+     * @param principal     主要
+     * @param parameters    参数
+     * @param model         模型
+     * @param sessionStatus 会话状态
+     * @return {@link ModelAndView}
+     */
+    @RequestMapping(value = "/authorize")
+    public ModelAndView authorize(Map<String, Object> model, @RequestParam Map<String, String> parameters,
+                                  SessionStatus sessionStatus, Principal principal) {
+        log.info("authorize {}", parameters.toString());
+        return authorizationEndpoint.authorize(model, parameters, sessionStatus, principal);
+    }
 
 
 }
