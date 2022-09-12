@@ -6,9 +6,11 @@ import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.endpoint.AuthorizationEndpoint;
 import org.springframework.security.oauth2.provider.endpoint.TokenEndpoint;
 import org.springframework.security.oauth2.provider.endpoint.WhitelabelApprovalEndpoint;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,9 +25,9 @@ import java.util.Map;
  * @date 2022/09/12
  */
 @Slf4j
-@Controller
-@RequestMapping("/oauth")
-@SessionAttributes("authorizationRequest")
+//@Controller
+//@RequestMapping("/oauth")
+//@SessionAttributes("authorizationRequest")
 public class AuthController {
 
     @Autowired
@@ -82,5 +84,20 @@ public class AuthController {
         return authorizationEndpoint.authorize(model, parameters, sessionStatus, principal);
     }
 
+//    /**
+//     * 批准或拒绝
+//     *
+//     * @param approvalParameters 批准参数
+//     * @param model              模型
+//     * @param sessionStatus      会话状态
+//     * @param principal          主要
+//     * @return {@link View}
+//     */
+//    @RequestMapping(value = "/authorize", method = RequestMethod.POST, params = OAuth2Utils.USER_OAUTH_APPROVAL)
+//    public View approveOrDeny(@RequestParam Map<String, String> approvalParameters, Map<String, ?> model,
+//                              SessionStatus sessionStatus, Principal principal) {
+//        log.info("approveOrDeny {}", approvalParameters.toString());
+//        return authorizationEndpoint.approveOrDeny(approvalParameters, model, sessionStatus, principal);
+//    }
 
 }

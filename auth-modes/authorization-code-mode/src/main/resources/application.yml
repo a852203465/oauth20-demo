@@ -11,7 +11,7 @@ spring:
         - http://localhost:8000/login/callback
         - http://localhost:8000/login/directly-callback
 
-      autoApprove: true
+      autoApprove: false
 
 
 
